@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chu Minh Sia | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #faf9f8;
+      color: #1a1a2e;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    :root {
+      --primary: #1a1a2e;
+      --secondary: #c9a84c;
+      --secondary-light: #e8d48b;
+      --accent: #2d2d44;
+      --light: #f5f3f0;
+      --text: #1a1a2e;
+      --text-light: #6b6b80;
+      --white: #ffffff;
+      --shadow: 0 20px 60px rgba(0,0,0,0.06);
+      --radius: 16px;
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 16px 0;
+      transition: all 0.4s ease;
+    }
+    nav.scrolled {
+      background: rgba(26,26,46,0.95);
+      backdrop-filter: blur(20px);
+      padding: 10px 0;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto;
+      padding: 0 24px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .nav-logo {
+      font-weight: 700; font-size: 1.25rem;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+    .nav-logo span { color: var(--secondary); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: color 0.3s;
+      letter-spacing: 0.3px;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--secondary); }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .nav-toggle span {
+      width: 24px; height: 2px;
+      background: var(--white);
+      transition: all 0.3s;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
+      display: flex; align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%; right: -20%;
+      width: 800px; height: 800px;
+      background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -30%; left: -10%;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(201,168,76,0.05) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero-grid {
+      position: relative; z-index: 1;
+      max-width: 1200px; margin: 0 auto;
+      padding: 120px 24px 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .hero-badge {
+      display: inline-block;
+      padding: 8px 20px;
+      background: rgba(201,168,76,0.15);
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 50px;
+      color: var(--secondary-light);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      color: rgba(255,255,255,0.7);
+      font-size: 1.1rem;
+      max-width: 480px;
+      margin-bottom: 36px;
+    }
+    .hero-cta {
+      display: flex; gap: 16px; flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 32px;
+      background: linear-gradient(135deg, var(--secondary), #b8942e);
+      color: #1a1a2e;
+      font-weight: 600; font-size: 0.9rem;
+      border: none; border-radius: 50px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(201,168,76,0.3);
+    }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 32px;
+      border: 2px solid rgba(255,255,255,0.2);
+      color: var(--white);
+      font-weight: 500; font-size: 0.9rem;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .btn-outline:hover {
+      border-color: var(--secondary);
+      color: var(--secondary);
+    }
+    .hero-visual {
+      display: flex; justify-content: center; align-items: center;
+    }
+    .hero-image-frame {
+      width: 380px; height: 380px;
+      border-radius: 50%;
+      border: 3px solid rgba(201,168,76,0.3);
+      overflow: hidden;
+      position: relative;
+      background: rgba(201,168,76,0.05);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero-image-frame img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .hero-image-frame .placeholder-icon {
+      font-size: 5rem;
+      color: rgba(201,168,76,0.3);
+    }
+    .hero-social {
+      position: absolute;
+      bottom: 40px; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 16px;
+    }
+    .hero-social a {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      transition: all 0.3s;
+      font-size: 1.1rem;
+    }
+    .hero-social a:hover {
+      border-color: var(--secondary);
+      color: var(--secondary);
+      background: rgba(201,168,76,0.1);
+    }
+
+    /* ===== SECTION ===== */
+    section { padding: 100px 0; }
+    .container {
+      max-width: 1200px; margin: 0 auto;
+      padding: 0 24px;
+    }
+    .section-label {
+      display: inline-block;
+      padding: 6px 16px;
+      background: rgba(201,168,76,0.1);
+      border-radius: 50px;
+      color: var(--secondary);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      color: var(--text-light);
+      font-size: 1.05rem;
+      max-width: 600px;
+      margin-bottom: 48px;
+    }
+
+    /* ===== ABOUT ===== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .about-image {
+      width: 100%; aspect-ratio: 4/5;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: #e8e4de;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .about-image img { width: 100%; height: 100%; object-fit: cover; }
+    .about-image .placeholder-icon { font-size: 4rem; color: #c4bdb5; }
+    .about-text h3 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+    .about-text p {
+      color: var(--text-light);
+      margin-bottom: 16px;
+      font-size: 0.95rem;
+    }
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 32px;
+    }
+    .stat-card {
+      text-align: center;
+      padding: 20px;
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+    }
+    .stat-card .num {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--secondary);
+      font-family: 'Playfair Display', serif;
+    }
+    .stat-card .label {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ===== TIMELINE (Education & Career) ===== */
+    .timeline-section {
+      background: var(--white);
+    }
+    .timeline {
+      position: relative;
+      padding-left: 40px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute; left: 14px; top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--secondary), rgba(201,168,76,0.1));
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 48px;
+      padding-left: 32px;
+    }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-dot {
+      position: absolute;
+      left: -32px; top: 6px;
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: var(--secondary);
+      border: 3px solid var(--white);
+      box-shadow: 0 0 0 2px var(--secondary);
+    }
+    .timeline-date {
+      display: inline-block;
+      padding: 4px 14px;
+      background: rgba(201,168,76,0.1);
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--secondary);
+      margin-bottom: 8px;
+    }
+    .timeline-item h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+    .timeline-item h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-light);
+      margin-bottom: 10px;
+    }
+    .timeline-item p, .timeline-item ul {
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+    .timeline-item ul { padding-left: 20px; margin-top: 8px; }
+    .timeline-item li { margin-bottom: 4px; }
+
+    /* ===== CAREER HIGHLIGHTS ===== */
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .highlight-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+      border-left: 4px solid var(--secondary);
+      position: relative;
+    }
+    .highlight-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.08);
+    }
+    .highlight-card .year {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--secondary);
+      margin-bottom: 8px;
+    }
+    .highlight-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+    .highlight-card p, .highlight-card ul {
+      color: var(--text-light);
+      font-size: 0.88rem;
+    }
+    .highlight-card ul { padding-left: 20px; margin-top: 6px; }
+    .highlight-card li { margin-bottom: 3px; }
+
+    /* ===== SKILLS ===== */
+    .skills-section { background: var(--primary); color: var(--white); }
+    .skills-section .section-label { background: rgba(201,168,76,0.2); }
+    .skills-section .section-title { color: var(--white); }
+    .skills-section .section-sub { color: rgba(255,255,255,0.6); }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px 60px;
+    }
+    .skill-group h4 {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--secondary-light);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
+    .skill-item { margin-bottom: 18px; }
+    .skill-item .name {
+      display: flex; justify-content: space-between;
+      font-size: 0.9rem; font-weight: 500;
+      margin-bottom: 6px;
+    }
+    .skill-bar {
+      width: 100%; height: 6px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .skill-bar .fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--secondary), var(--secondary-light));
+      border-radius: 10px;
+      width: 0;
+      transition: width 1.2s ease;
+    }
+
+    /* ===== GALLERY ===== */
+    /* ===== GALLERY ===== */
+
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+}
+
+.gallery-item{
+    background:#fff;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+    transition:.35s ease;
+}
+
+.gallery-item:hover{
+    transform:translateY(-8px);
+    box-shadow:0 20px 45px rgba(0,0,0,.15);
+}
+
+.gallery-item img{
+    width:100%;
+    height:240px;
+    display:block;
+    object-fit:cover;
+}
+
+.gallery-item .label{
+    display:block;
+    padding:18px;
+    background:#fff;
+    color:#1a1a2e;
+    text-align:center;
+    font-size:17px;
+    font-weight:700;
+    line-height:1.4;
+}
+    .gallery-item .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(26,26,46,0.7);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+      color: var(--white);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    .gallery-item:hover .overlay { opacity: 1; }
+
+    /* ===== EXPERIENCE ===== */
+    .exp-header {
+      display: flex; align-items: center; gap: 24px;
+      margin-bottom: 20px;
+    }
+    .exp-icon {
+      width: 64px; height: 64px;
+      border-radius: 16px;
+      background: rgba(201,168,76,0.1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+      color: var(--secondary);
+      flex-shrink: 0;
+    }
+    .exp-content h3 { font-size: 1.3rem; margin-bottom: 2px; }
+    .exp-content .role { color: var(--secondary); font-weight: 600; font-size: 0.95rem; }
+    .exp-content .date { color: var(--text-light); font-size: 0.85rem; }
+    .exp-desc {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      margin-top: 16px;
+    }
+    .exp-tags {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-top: 16px;
+    }
+    .exp-tags span {
+      padding: 6px 14px;
+      background: rgba(201,168,76,0.08);
+      border-radius: 50px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--secondary);
+    }
+    .exp-logos {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+    }
+    .exp-logos p {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-bottom: 8px;
+    }
+    .exp-logos .logos {
+      display: flex; flex-wrap: wrap; gap: 8px;
+    }
+    .exp-logos .logos span {
+      padding: 4px 12px;
+      background: var(--light);
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--text-light);
+    }
+
+    /* ===== CONTACT ===== */
+    .contact-section {
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      color: var(--white);
+    }
+    .contact-section .section-label { background: rgba(201,168,76,0.2); }
+    .contact-section .section-title { color: var(--white); }
+    .contact-section .section-sub { color: rgba(255,255,255,0.6); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+    }
+    .contact-info { display: flex; flex-direction: column; gap: 24px; }
+    .contact-item {
+      display: flex; align-items: center; gap: 16px;
+    }
+    .contact-item .icon {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      background: rgba(201,168,76,0.1);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--secondary);
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .contact-item .detail h4 { font-size: 0.9rem; font-weight: 600; }
+    .contact-item .detail p { font-size: 0.85rem; color: rgba(255,255,255,0.6); }
+    .contact-item .detail a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.3s; }
+    .contact-item .detail a:hover { color: var(--secondary); }
+    .contact-form {
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    .contact-form input, .contact-form textarea {
+      padding: 14px 18px;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      background: rgba(255,255,255,0.05);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border 0.3s;
+    }
+    .contact-form input:focus, .contact-form textarea:focus {
+      border-color: var(--secondary);
+    }
+    .contact-form input::placeholder, .contact-form textarea::placeholder {
+      color: rgba(255,255,255,0.35);
+    }
+    .contact-form textarea { min-height: 120px; resize: vertical; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #111125;
+      padding: 32px 24px;
+      text-align: center;
+      color: rgba(255,255,255,0.4);
+      font-size: 0.85rem;
+    }
+    footer span { color: var(--secondary); }
+
+    /* ===== ANIMATIONS ===== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fade-in-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: all 0.8s ease;
+    }
+    .fade-in-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .fade-in-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: all 0.8s ease;
+    }
+    .fade-in-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.6s ease;
+    }
+    .fade-in-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 968px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 40px;
+      }
+      .hero h1 { font-size: 2.5rem; }
+      .hero p { margin: 0 auto 36px; }
+      .hero-cta { justify-content: center; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-image { max-width: 400px; margin: 0 auto; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .nav-links {
+        position: fixed; top: 0; right: -100%;
+        width: 280px; height: 100vh;
+        background: var(--primary);
+        flex-direction: column;
+        padding: 80px 32px;
+        transition: right 0.3s;
+        gap: 24px;
+      }
+      .nav-links.active { right: 0; }
+      .nav-toggle { display: flex; }
+      .hero h1 { font-size: 2rem; }
+      .hero-image-frame { width: 260px; height: 260px; }
+      .section-title { font-size: 1.8rem; }
+      .about-stats { grid-template-columns: 1fr; }
+      .highlights-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">CMS<span>.</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about" class="active">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#highlights">Highlights</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-badge"><i class="fas fa-briefcase"></i> &nbsp;Property Consultant &bull; Manajemen</div>
+        <h1>Welcome to<br>My <span>Portfolio</span></h1>
+        <p>Chu Minh Sia &mdash; Mahasiswa Manajemen UKRIDA &amp; Property Consultant di MYPRO Property.</p>
+        <div class="hero-cta">
+          <a href="#contact" class="btn-primary"><i class="fas fa-paper-plane"></i> Let's Connect</a>
+          <a href="#about" class="btn-outline"><i class="fas fa-user"></i> About Me</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-image-frame">
+          <img src="foto_1.jpeg" alt="Chu Minh Sia">
+          <!-- Ganti: <img src="assets/foto_1.jpg" alt="Chu Minh Sia"> -->
+        </div>
+      </div>
+    </div>
+    <div class="hero-social">
+      <a href="tel:081289212841" aria-label="Phone"><i class="fas fa-phone"></i></a>
+      <a href="mailto:leemeyy2121@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      <a href="https://instagram.com/mysiaaa._" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image fade-in-left">
+          <img src="foto_2.jpeg" alt="Tentang Saya">
+          <!-- Ganti: <img src="assets/about.jpg" alt="Tentang Saya"> -->
+        </div>
+        <div class="about-text fade-in-right">
+          <div class="section-label">About Me</div>
+          <h3>Halo! Saya <em>Chu Minh Sia</em></h3>
+          <p>
+            Mahasiswa Program Studi Manajemen di Universitas Kristen Krida Wacana yang saat ini juga aktif bekerja sebagai <strong>Property Consultant</strong> di MYPRO Property.
+          </p>
+          <p>
+            Saya memiliki minat yang besar di bidang bisnis, pemasaran, pelayanan pelanggan, serta manajemen tim. Sejak mulai bekerja, saya terbiasa menangani koordinasi tim dalam skala besar, membantu proses transaksi properti, hingga terlibat dalam penyelenggaraan berbagai event perusahaan.
+          </p>
+          <p>
+            Saya percaya bahwa integritas, komunikasi yang baik, dan semangat untuk terus belajar merupakan fondasi utama dalam memberikan hasil terbaik kepada setiap klien maupun tim.
+          </p>
+          <div class="about-stats">
+            <div class="stat-card">
+              <div class="num">3+</div>
+              <div class="label">Years Exp</div>
+            </div>
+            <div class="stat-card">
+              <div class="num">700+</div>
+              <div class="label">Marketing Coord</div>
+            </div>
+            <div class="stat-card">
+              <div class="num">10+</div>
+              <div class="label">Projects</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education" class="timeline-section">
+    <div class="container">
+      <div class="section-label">Educational Journey</div>
+      <h2 class="section-title">Pendidikan</h2>
+      <p class="section-sub">Perjalanan akademik yang membentuk fondasi pengetahuan dan karakter.</p>
+      <div class="timeline">
+        <div class="timeline-item fade-in-up">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2023 &ndash; Present</div>
+          <h3>Universitas Kristen Krida Wacana (UKRIDA)</h3>
+          <h4>Bachelor of Management</h4>
+          <ul>
+            <li>Mahasiswa aktif Program Studi Manajemen.</li>
+            <li>Menjalani perkuliahan sambil bekerja sebagai Property Consultant.</li>
+            <li>Aktif mengembangkan kemampuan dalam bidang bisnis, pemasaran, dan kepemimpinan.</li>
+          </ul>
+        </div>
+        <div class="timeline-item fade-in-up">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2020 &ndash; 2023</div>
+          <h3>SMK Yadika 1 Jakarta</h3>
+          <h4>Business Tourism Management, Hotel &amp; Event Management</h4>
+          <ul>
+            <li>Praktik Kerja Lapangan di Merlynn Park Hotel sebagai Front Office.</li>
+            <li>Mendalami bidang pelayanan pelanggan, hospitality, dan event management.</li>
+          </ul>
+        </div>
+        <div class="timeline-item fade-in-up">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2017 &ndash; 2020</div>
+          <h3>SMP Strada Pelita II</h3>
+          <h4>&nbsp;</h4>
+          <ul>
+            <li>Tim Inti Basket Sekolah.</li>
+            <li>Ketua Pimpinan Regu Pramuka.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="container">
+      <div class="section-label">Professional Experience</div>
+      <h2 class="section-title">Pengalaman Kerja</h2>
+      <p class="section-sub">Perjalanan karier di dunia properti dan manajemen.</p>
+      <div class="exp-header fade-in">
+        <div class="exp-icon"><i class="fas fa-building"></i></div>
+        <div class="exp-content">
+          <h3>MYPRO Property</h3>
+          <div class="role">Property Consultant</div>
+          <div class="date">2023 &ndash; Present</div>
+        </div>
+      </div>
+      <div class="exp-desc fade-in">
+        <p>
+          Sebagai Property Consultant, saya bertanggung jawab membantu pelanggan menemukan properti yang sesuai dengan kebutuhan serta memberikan konsultasi hingga proses transaksi selesai.
+        </p>
+      </div>
+      <div class="exp-tags fade-in">
+        <span>Property Sales</span>
+        <span>Property Consultation</span>
+        <span>CRM</span>
+        <span>Marketing Strategy</span>
+        <span>Sales Negotiation</span>
+        <span>Team Coordination</span>
+        <span>Event Coordination</span>
+      </div>
+      <div class="exp-logos fade-in">
+        <p><i class="fas fa-handshake"></i> Developer mitra:</p>
+        <div class="logos">
+          <span>Summarecon</span>
+          <span>Sinar Mas Land</span>
+          <span>Paramount Land</span>
+          <span>Alam Sutera</span>
+          <span>Asthara</span>
+          <span>&amp; Developer Nasional Lainnya</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAREER HIGHLIGHTS -->
+  <section id="highlights" class="timeline-section">
+    <div class="container">
+      <div class="section-label">Career Highlights</div>
+      <h2 class="section-title">Pencapaian</h2>
+      <p class="section-sub">Momen-momen penting dalam perjalanan profesional.</p>
+      <div class="highlights-grid">
+        <div class="highlight-card fade-in-up">
+          <div class="year">2023</div>
+          <h3>PIC Marketing Coordinator</h3>
+          <p>Dipercaya menjadi Person in Charge (PIC) yang mengoordinasikan lebih dari 700 marketing yang tersebar di berbagai cabang perusahaan, meliputi:</p>
+          <ul>
+            <li>Taman Palem (Head Office)</li>
+            <li>Pantai Indah Kapuk (PIK)</li>
+            <li>Bekasi</li>
+            <li>Gading Serpong</li>
+            <li>BSD</li>
+          </ul>
+          <p style="margin-top:8px;">Bertanggung jawab dalam pengelolaan operasional, koordinasi tim, komunikasi antar cabang, serta memastikan seluruh aktivitas pemasaran berjalan secara efektif.</p>
+        </div>
+        <div class="highlight-card fade-in-up">
+          <div class="year">2023 &ndash; 2025</div>
+          <h3>Event Management</h3>
+          <p>Terlibat dalam perencanaan dan pengelolaan berbagai kegiatan perusahaan, antara lain:</p>
+          <ul>
+            <li>Awarding Event</li>
+            <li>Fun Run</li>
+            <li>Company Gathering</li>
+          </ul>
+          <p style="margin-top:8px;">Memastikan seluruh rangkaian acara berjalan dengan baik mulai dari tahap persiapan, koordinasi vendor, pengelolaan peserta, hingga pelaksanaan acara.</p>
+        </div>
+        <div class="highlight-card fade-in-up">
+          <div class="year">2025</div>
+          <h3>Property Sales Achievement</h3>
+          <p>Menangani berbagai transaksi penjualan properti dari proyek-proyek perumahan yang dikembangkan oleh developer ternama seperti Summarecon, Sinar Mas Land, Paramount Land, Alam Sutera, Asthara, dan developer nasional lainnya.</p>
+          <p style="margin-top:8px;">Atas pencapaian tersebut, memperoleh <strong>Overseas Reward Trip</strong> sebagai bentuk apresiasi atas performa penjualan.</p>
+        </div>
+        <div class="highlight-card fade-in-up">
+          <div class="year">2026</div>
+          <h3>Master of Ceremony (MC)</h3>
+          <p>Dipercaya menjadi Master of Ceremony (MC) dalam acara Awarding Perusahaan yang dihadiri oleh ratusan peserta.</p>
+        </div>
+        <div class="highlight-card fade-in-up">
+          <div class="year">2026</div>
+          <h3>Commercial Talent</h3>
+          <p>Menjadi talent pemeran utama dalam kampanye iklan Sunsilk yang ditayangkan melalui SCTV serta kolaborasi media sosial TikTok.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="skills-section">
+    <div class="container">
+      <div class="section-label">Skills</div>
+      <h2 class="section-title">Keahlian</h2>
+      <p class="section-sub">Kompetensi yang telah dikembangkan selama perkuliahan dan pengalaman profesional.</p>
+      <div class="skills-grid">
+        <div class="fade-in">
+          <div class="skill-group">
+            <h4>Professional Skills</h4>
+            <div class="skill-item"><div class="name"><span>Leadership</span><span>95%</span></div><div class="skill-bar"><div class="fill" data-width="95"></div></div></div>
+            <div class="skill-item"><div class="name"><span>Property Consultation</span><span>90%</span></div><div class="skill-bar"><div class="fill" data-width="90"></div></div></div>
+            <div class="skill-item"><div class="name"><span>Sales &amp; Negotiation</span><span>92%</span></div><div class="skill-bar"><div class="fill" data-width="92"></div></div></div>
+            <div class="skill-item"><div class="name"><span>Business Development</span><span>85%</span></div><div class="skill-bar"><div class="fill" data-width="85"></div></div></div>
+            <div class="skill-item"><div class="name"><span>Marketing Strategy</span><span>88%</span></div><div class="skill-bar"><div class="fill" data-width="88"></div></div></div>
+            <div class="skill-item"><div class="name"><span>CRM</span><span>87%</span></div><div class="skill-bar"><div class="fill" data-width="87"></div></div></div>
+          </div>
+        </div>
+        <div class="fade-in">
+          <div class="skill-group">
+            <h4>Soft Skills</h4>
+            <div class="skill-item"><div class="name"><span>Event Management</span><span>90%</span></div><div class="skill-bar"><div class="fill" data-width="90"></div></div></div>
+            <div class="skill-item"><div class="name"><span>Public Speaking</span><span>88%</span></div><div class="skill-bar"><div class="fill" data-width="88"></div></div></div>
+            <div class="skill-item"><div class="name"><span>Team Management</span><span>93%</span></div><div class="skill-bar"><div class="fill" data-width="93"></div></div></div>
+            <div class="skill-item"><div class="name"><span>Communication</span><span>92%</span></div><div class="skill-bar"><div class="fill" data-width="92"></div></div></div>
+            <div class="skill-item"><div class="name"><span>Problem Solving</span><span>85%</span></div><div class="skill-bar"><div class="fill" data-width="85"></div></div></div>
+            <div class="skill-item"><div class="name"><span>Time Management</span><span>88%</span></div><div class="skill-bar"><div class="fill" data-width="88"></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery">
+  <div class="container">
+    <div class="section-label">Gallery</div>
+    <h2 class="section-title">Dokumentasi</h2>
+    <p class="section-sub">Dokumentasi kegiatan profesional dan akademik.</p>
+
+    <div class="gallery-grid">
+
+      <div class="gallery-item fade-in-up">
+        <img src="property_exhibition.jpeg" alt="Property Exhibition" width="350" height="250">
+        <span class="label">Property Exhibition</span>
+      </div>
+
+      <div class="gallery-item fade-in-up">
+        <img src="closing_property.jpeg" alt="Closing Property" width="350" height="250">
+        <span class="label">Closing Property</span>
+      </div>
+
+      <div class="gallery-item fade-in-up">
+        <img src="awarding.jpeg" alt="Awarding Event" width="350" height="250">
+        <span class="label">Awarding Event</span>
+      </div>
+
+      <div class="gallery-item fade-in-up">
+        <img src="funrun.jpeg" alt="Fun Run" width="350" height="250">
+        <span class="label">Fun Run</span>
+      </div>
+
+      <div class="gallery-item fade-in-up">
+        <img src="company_gath.jpeg" alt="Company Gathering" width="350" height="250">
+        <span class="label">Company Gathering</span>
+      </div>
+
+      <div class="gallery-item fade-in-up">
+        <img src="mc.jpeg" alt="Master of Ceremony" width="350" height="250">
+        <span class="label">Master of Ceremony</span>
+      </div>
+
+      <div class="gallery-item fade-in-up">
+        <img src="SUNSILK.jpeg" alt="Commercial Shooting" width="350" height="250">
+        <span class="label">Commercial Shooting</span>
+      </div>
+
+      <div class="gallery-item fade-in-up">
+        <img src="campus.jpeg" alt="Campus Activities" width="350" height="250">
+        <span class="label">Campus Activities</span>
+      </div>
+
+      <div class="gallery-item fade-in-up">
+        <img src="team_collab.jpeg" alt="Team Collaboration" width="350" height="250">
+        <span class="label">Team Collaboration</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <div class="section-label">Contact</div>
+      <h2 class="section-title">Let's Connect</h2>
+      <p class="section-sub">Saya terbuka untuk diskusi, kolaborasi, atau sekadar bertukar pikiran.</p>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-item fade-in-left">
+            <div class="icon"><i class="fas fa-phone"></i></div>
+            <div class="detail">
+              <h4>Phone</h4>
+              <p><a href="tel:081289212841">0812-8921-2841</a></p>
+            </div>
+          </div>
+          <div class="contact-item fade-in-left">
+            <div class="icon"><i class="fas fa-envelope"></i></div>
+            <div class="detail">
+              <h4>Email</h4>
+              <p><a href="mailto:leemeyy2121@gmail.com">leemeyy2121@gmail.com</a></p>
+            </div>
+          </div>
+          <div class="contact-item fade-in-left">
+            <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="detail">
+              <h4>Location</h4>
+              <p>West Jakarta, Indonesia</p>
+            </div>
+          </div>
+          <div class="contact-item fade-in-left">
+            <div class="icon"><i class="fab fa-instagram"></i></div>
+            <div class="detail">
+              <h4>Instagram</h4>
+              <p><a href="https://instagram.com/mysiaaa._" target="_blank">@mysiaaa._</a></p>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form fade-in-right" onsubmit="event.preventDefault(); alert('Pesan berhasil dikirim! (Demo)'); this.reset();">
+          <input type="text" placeholder="Nama Anda" required>
+          <input type="email" placeholder="Email Anda" required>
+          <input type="text" placeholder="Subjek">
+          <textarea placeholder="Pesan Anda..." required></textarea>
+          <button type="submit" class="btn-primary" style="align-self:flex-start;"><i class="fas fa-paper-plane"></i> Kirim Pesan</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 <span>Chu Minh Sia</span> &mdash; Designed &amp; Developed by Chu Minh Sia</p>
+  </footer>
+
+  <script>
+    // ===== NAVBAR SCROLL =====
+    const navbar = document.getElementById('navbar');
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // Close nav on link click
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.addEventListener('click', () => navLinks.classList.remove('active'));
+    });
+
+    // Active link highlight
+    const sections = document.querySelectorAll('section[id]');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 200) current = s.id;
+      });
+      document.querySelectorAll('.nav-links a').forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+      });
+    });
+
+    // ===== SCROLL REVEAL =====
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .fade-in-up').forEach(el => {
+      observer.observe(el);
+    });
+
+    // ===== SKILL BARS =====
+    const skillObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const fill = entry.target;
+          fill.style.width = fill.dataset.width + '%';
+          skillObserver.unobserve(fill);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.skill-bar .fill').forEach(el => {
+      skillObserver.observe(el);
+    });
+  </script>
+</body>
+</html>
